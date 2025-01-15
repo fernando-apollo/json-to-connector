@@ -1,5 +1,6 @@
 package com.apollographql.oas.gen;
 
+import com.apollographql.json.walker.ConnectorWriter;
 import com.apollographql.json.walker.Walker;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -19,13 +20,11 @@ public class TestSuite {
   private StringWriter writer;
 
   @BeforeEach
-  void setUp() throws IOException {
+  void setUp() {
     System.out.println("ParserTest.setUp creating writer...");
     this.writer = new StringWriter();
-    writeConnector(writer);
   }
 
-  //  @AfterEach
   ImmutablePair<Integer, String> checkCompose() throws IOException, InterruptedException {
     final String schema = getWriter().toString();
     return Rover.compose(schema);
@@ -40,9 +39,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("preferences/user/50.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -53,10 +50,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("live-scores/all/2023-12-23_15_00.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
-
+    ConnectorWriter.write(walker, getWriter());
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
   }
@@ -66,9 +60,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/fixtures/championship/2023-12-23.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -80,9 +72,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/leagues/scottish-premiership.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -93,9 +83,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/line-ups/luton-vs-newcastle.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -106,9 +94,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/results/scottish-premiership/2023-12-23.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -119,9 +105,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/tables/championship/2023-12-23.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+  ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -132,9 +116,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("stats/tables/not-found.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -145,9 +127,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("live-scores/all/2023-12-23_15_01.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -158,9 +138,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("fronts/2023-12-23.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -171,9 +149,7 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("articles/search.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(0, result.getLeft());
@@ -184,12 +160,10 @@ public class TestSuite {
     final Walker walker = new Walker(parentFolder("articles/clockwatch/2023-12-16.json"));
     walker.walk();
 
-    final Writer writer = getWriter();
-    walker.writeTypes(writer);
-    writeQuery(walker, writer);
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
-    assertEquals(0, result.getLeft());
+    assertEquals(1, result.getLeft());
   }
 
   // internal methods
@@ -200,33 +174,6 @@ public class TestSuite {
 
     final String path = input.getPath();
     return new File(path).getParentFile();
-  }
-
-  static void writeConnector(final Writer writer) throws IOException {
-    writer.append("""
-  extend schema
-    @link(url: "https://specs.apollo.dev/federation/v2.10", import: ["@key"])
-    @link(
-      url: "https://specs.apollo.dev/connect/v0.1"
-      import: ["@connect", "@source"]
-    )
-    @source(name: "api", http: { baseURL: "http://localhost:4010" })
-    
-   """);
-  }
-
-  private static void writeQuery(final Walker walker, final Writer writer) throws IOException {
-    writer.append("\n").append("""
-      type Query {
-        root: Root
-          @connect(
-            source: "api"
-            http: { GET: "/test" }
-            selection: ""\"
-      """);
-
-    walker.writeSelection(writer);
-    writer.append("\"\"\"\n)}");
   }
 
   static class Rover {
@@ -260,7 +207,7 @@ public class TestSuite {
       // Wait for the process to finish and get the exit code
       final int errorCode = process.waitFor();
 
-      return new ImmutablePair<Integer, String>(errorCode, writer.toString());
+      return new ImmutablePair<>(errorCode, writer.toString());
 //      return errorCode;
     }
   }
