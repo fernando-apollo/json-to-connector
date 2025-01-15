@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="updates, updates..">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JsonToGQL_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/ConnectorWriter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_09_luton-town-manchester-city-history-rivalry.json" afterDir="false" />
@@ -63,10 +61,12 @@
       <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/premier-league/2023-12-23.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-22.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/test/test.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test/merge/a.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test/merge/b.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test/merge/c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/fernando/IdeaProjects/JsonToConnector",
+    "last_opened_file_path": "/Users/fernando/IdeaProjects/JsonToConnector/src/test/resources/test/merge",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -112,9 +112,11 @@
       <recent name="com.apollographql.json.walker" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/test/merge" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/test/merge" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
@@ -233,6 +235,15 @@
       <option name="presentableId" value="Default" />
       <updated>1736864392628</updated>
     </task>
+    <task id="LOCAL-00001" summary="updates, updates..">
+      <option name="closed" value="true" />
+      <created>1736950025228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736950025228</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

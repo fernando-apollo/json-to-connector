@@ -12,19 +12,19 @@ import java.util.concurrent.Callable;
 
 
 @CommandLine.Command(name = "walk", mixinStandardHelpOptions = true, version = "walk 1.0",
-  description = "Walks a JSON file and derives a GQL schema")
+  description = "Walks a folder containing JSON file and derives an Apollo Connector GQL schema")
 class Command implements Callable<Integer> {
 
   @Parameters(index = "0", description = "The folder where JSON payloads exist.")
   private File folder;
 
-  @Option(names = "-c", description = "output an Apollo Connector template")
+  @Option(names = "-c", description = "output an Apollo Connector template", defaultValue = "true")
   boolean connector;
 
   @Option(names = "-t", description = "output the GraphQL schema types")
   boolean types;
 
-  @Option(names = "-s", description = "output the Apollo Connector selection")
+  @Option(names = "-s", description = "[default] output the Apollo Connector selection")
   boolean selection;
 
   @Option(names = {"-o", "--output-file"}, paramLabel = "output", description = "where to write the output")
