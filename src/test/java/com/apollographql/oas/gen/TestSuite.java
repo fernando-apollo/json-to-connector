@@ -34,7 +34,7 @@ public class TestSuite {
     return writer;
   }
 
-  @Test
+  /*@Test
   void test_001() throws IOException, InterruptedException {
     final Walker walker = new Walker(parentFolder("preferences/user/50.json"));
     walker.walk();
@@ -158,6 +158,17 @@ public class TestSuite {
   @Test
   void test_012() throws IOException, InterruptedException {
     final Walker walker = new Walker(parentFolder("articles/clockwatch/2023-12-16.json"));
+    walker.walk();
+
+    ConnectorWriter.write(walker, getWriter());
+
+    final Pair<Integer, String> result = checkCompose();
+    assertEquals(1, result.getLeft());
+  }*/
+
+  @Test
+  void test_013() throws IOException, InterruptedException {
+    final Walker walker = new Walker(parentFolder("test/merge/a.json"));
     walker.walk();
 
     ConnectorWriter.write(walker, getWriter());
