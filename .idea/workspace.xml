@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2rciCFlqizTebEizzsAr9ru5It3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/fernando/IdeaProjects/JsonToGQL/src/test/resources",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.apollographql.json.walker.types" />
+      <recent name="com.apollographql.json.walker" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TestSuite.test_012">
+    <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
+      <module name="JsonToGQL" />
+      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/Documents/Opportunities/TheGuardian/payloads/json/test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.json.walker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_008" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_008" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_009" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_009" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_010" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_010" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_011" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_011" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_012" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_012" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestSuite.test_012" />
+        <item itemvalue="JUnit.TestSuite.test_011" />
+        <item itemvalue="JUnit.TestSuite.test_010" />
+        <item itemvalue="JUnit.TestSuite.test_009" />
+        <item itemvalue="JUnit.TestSuite.test_008" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="" />
+      <created>1736864392628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736864392628</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JsonToGQL$TestSuite_test_009.ic" NAME="TestSuite.test_009 Coverage Results" MODIFIED="1736940275194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.apollographql.oas.gen.*</FILTER>
+    </SUITE>
+  </component>
+</project>
