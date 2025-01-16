@@ -22,23 +22,30 @@ jobs:
         distribution: 'temurin'
         java-version: '17' # Change this if your project uses a different Java version
 
+    - name: Set Maven project version
+      run: |
+        VERSION="1.0.${{ github.run_number }}" # Replace this with your versioning scheme
+        mvn versions:set -DnewVersion=$VERSION
+        echo "Version set to $VERSION"
+        
     # Build the Maven project
     - name: Build with Maven
       run: mvn clean package
 
-    # Add the generated JAR to a specific folder
+    # Move the versioned JAR to a Release directory
     - name: Move JAR to Release Directory
       run: |
         mkdir -p release
-        mv target/*.jar release/
+        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        mv target/*-${VERSION}.jar release/
 
-    # Commit the JAR file back to the repository
-    - name: Commit JAR file
+    # Commit the updated `pom.xml` and the versioned JAR back to the repository
+    - name: Commit version and JAR
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add release/
-        git commit -m "Add generated JAR file [CI]"
+        git add pom.xml release/
+        git commit -m "Set project version to $VERSION and add JAR file [CI]"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
