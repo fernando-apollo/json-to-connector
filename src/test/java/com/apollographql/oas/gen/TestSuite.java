@@ -13,8 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSuite {
   private StringWriter writer;
@@ -34,7 +33,7 @@ public class TestSuite {
     return writer;
   }
 
-  /*@Test
+  @Test
   void test_001() throws IOException, InterruptedException {
     final Walker walker = new Walker(parentFolder("preferences/user/50.json"));
     walker.walk();
@@ -164,7 +163,8 @@ public class TestSuite {
 
     final Pair<Integer, String> result = checkCompose();
     assertEquals(1, result.getLeft());
-  }*/
+    assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
+  }
 
   @Test
   void test_013() throws IOException, InterruptedException {
@@ -174,7 +174,31 @@ public class TestSuite {
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose();
+    assertEquals(0, result.getLeft());
+  }
+
+  @Test
+  void test_014() throws IOException, InterruptedException {
+    final Walker walker = new Walker(parentFolder("articles/blog/blog_2023_dec_05_late-arsenal-blow-negates-admirable-efforts-of-barkley-and-raucous-crowd.json"));
+    walker.walk();
+
+    ConnectorWriter.write(walker, getWriter());
+
+    final Pair<Integer, String> result = checkCompose();
     assertEquals(1, result.getLeft());
+    assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
+  }
+
+  @Test
+  void test_015() throws IOException, InterruptedException {
+    final Walker walker = new Walker(parentFolder("articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json"));
+    walker.walk();
+
+    ConnectorWriter.write(walker, getWriter());
+
+    final Pair<Integer, String> result = checkCompose();
+    assertEquals(1, result.getLeft());
+    assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
 
   // internal methods

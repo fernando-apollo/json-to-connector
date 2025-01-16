@@ -1,5 +1,8 @@
 package com.apollographql.json.walker;
 
+import static com.apollographql.json.walker.log.Trace.trace;
+import static com.apollographql.json.walker.log.Trace.warn;
+
 import com.apollographql.json.walker.types.Array;
 import com.apollographql.json.walker.types.Obj;
 import com.apollographql.json.walker.types.Scalar;
@@ -56,14 +59,19 @@ public class Walker {
   }
 
   private void walkSource(final File source) throws FileNotFoundException {
+    trace(context, "-> [walkSource]", "in: " + source.getName());
     final JsonElement root = JsonParser.parseReader(new FileReader(source));
 
     Type rootType = walkElement(getContext(), null, "root", root);
-    System.out.println("Walker.walkSource types found: " + context.getTypes().size());
+    trace(context, "   [walkSource]", "types found: " + context.getTypes().size());
+
+    trace(context, "<- [walkSource]", "out: " + source.getName());
   }
 
   private Type walkElement(final Context context, final Type parent, final String name, final JsonElement element) {
-    Type result = null;
+    trace(context, "-> [walkElement]", "in: " + name);
+
+    Type result;
 
     if (element.isJsonObject()) {
       result = walkObject(context, parent, name, element.getAsJsonObject());
@@ -79,26 +87,30 @@ public class Walker {
       throw new IllegalStateException("Cannot yet handle '" + name + "' of type " + element);
     }
 
+    trace(context, "<- [walkElement]", "out: " + name);
     return result;
   }
 
   private Obj walkObject(final Context context, final Type parent, final String name, final JsonObject object) {
+    trace(context, "-> [walkObject]", "in: " + name);
     Obj result = new Obj(name, parent);
 
     final Set<String> fieldSet = object.keySet();
-    System.out.println("  [walkObject] fieldSet: " + fieldSet);
+    trace(context, "  [walkObject]", "fieldSet: " + fieldSet);
 
     for (String field : fieldSet) {
-      System.out.println("  [walkObject] field: " + field);
+      trace(context, "  [walkObject]", "field: " + field);
       Type type = walkElement(context, result, field, object.get(field));
 
       result.add(field, type);
     }
 
+    trace(context, "<- [walkObject]", "out: " + name);
     return result;
   }
 
   private Array walkArray(final Context context, Type parent, final String name, final JsonArray array) {
+    trace(context, "-> [walkArray]", "in: " + name);
     Array result = new Array(name, parent);
 
     if (!array.isEmpty()) {
@@ -107,11 +119,10 @@ public class Walker {
       result.setArrayType(arrayType);
     }
     else {
-       System.err.println("Array is empty -- cannot derive type for field '" + name + "'");
-      // or we can assume that it's of type string for now
-//      result.setArrayType(new Scalar(name, result, "string"));
+      warn(context, "   [walkArray]", "Array is empty -- cannot derive type for field '" + name + "'");
     }
 
+    trace(context, "-> [walkArray]", "in: " + name);
     return result;
   }
 

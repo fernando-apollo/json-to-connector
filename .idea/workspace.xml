@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="updates, updates..">
+    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="commented tests until we get permission to use them">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_09_luton-town-manchester-city-history-rivalry.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_09_manchester-city-set-for-heavyweight-luton-fight-after-punch-in-the-face.json" afterDir="false" />
@@ -13,9 +15,8 @@
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_17_tom-lockyer-luton-tests-update-cardiac-arrest.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_21_luton-tom-lockyer-discharged-from-hospital-cardiac-arrest.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_22_we-want-to-win-for-tom-lockyer-rob-edwards-expects-emotional-return-for-luton.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/blog_2023_dec_05_late-arsenal-blow-negates-admirable-efforts-of-barkley-and-raucous-crowd.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/blog_2023_dec_10_guardiolas-manchester-city-bury-ghosts-of-matches-past-to-beat-stubborn-luton.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/not-found.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/blog/blog_2023_dec_05_late-arsenal-blow-negates-admirable-efforts-of-barkley-and-raucous-crowd.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/blog/blog_2023_dec_10_guardiolas-manchester-city-bury-ghosts-of-matches-past-to-beat-stubborn-luton.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/2023-12-16.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/2023-12-23.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/not-found.json" afterDir="false" />
@@ -61,6 +62,13 @@
       <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-22.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-23.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/ConnectorWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/ConnectorWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +85,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,19 +97,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/fernando/IdeaProjects/JsonToConnector/src/test/resources/test/merge",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fernando/IdeaProjects/JsonToConnector/src/test/resources/test/merge&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.apollographql.json.walker.types" />
@@ -111,70 +120,23 @@
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/articles/blog" />
       <recent name="$PROJECT_DIR$/src/test/resources/test/merge" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSuite.test_012">
+  <component name="RunManager" selected="Application.Command">
     <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
       <module name="JsonToGQL" />
-      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/Documents/Opportunities/TheGuardian/payloads/json/test" />
+      <option name="PROGRAM_PARAMETERS" value="$USER_HOME$/Documents/Opportunities/TheGuardian/payloads/json/test -t" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.apollographql.json.walker.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSuite.test_001" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JsonToGQL" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
-      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_001" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSuite.test_009" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JsonToGQL" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
-      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_009" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSuite.test_010" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JsonToGQL" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
-      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_010" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,13 +173,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestSuite.test_013" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_013" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_014" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_014" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_015" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_015" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSuite.test_015" />
         <item itemvalue="JUnit.TestSuite.test_012" />
+        <item itemvalue="JUnit.TestSuite.test_013" />
+        <item itemvalue="JUnit.TestSuite.test_014" />
         <item itemvalue="JUnit.TestSuite.test_011" />
-        <item itemvalue="JUnit.TestSuite.test_001" />
-        <item itemvalue="JUnit.TestSuite.test_010" />
-        <item itemvalue="JUnit.TestSuite.test_009" />
       </list>
     </recent_temporary>
   </component>
@@ -238,12 +248,21 @@
       <option name="project" value="LOCAL" />
       <updated>1736950025228</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commented tests until we get permission to use them">
+      <option name="closed" value="true" />
+      <created>1736958937227</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736958937227</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updates, updates.." />
-    <option name="LAST_COMMIT_MESSAGE" value="updates, updates.." />
+    <MESSAGE value="commented tests until we get permission to use them" />
+    <option name="LAST_COMMIT_MESSAGE" value="commented tests until we get permission to use them" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JsonToGQL$TestSuite_test_009.ic" NAME="TestSuite.test_009 Coverage Results" MODIFIED="1736940275194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

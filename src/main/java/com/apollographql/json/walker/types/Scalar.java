@@ -6,6 +6,8 @@ import com.apollographql.json.walker.NameUtils;
 import java.io.IOException;
 import java.io.Writer;
 
+import static com.apollographql.json.walker.log.Trace.trace;
+
 public class Scalar extends Type {
   private final String type;
 
@@ -20,6 +22,7 @@ public class Scalar extends Type {
 
   @Override
   public void write(final Context context, final Writer writer) throws IOException {
+    trace(context, "[scalar:write]", "-> in: " + getName());
     writer
       .append(indent(context));
 
@@ -27,15 +30,17 @@ public class Scalar extends Type {
     writer
       .append(field);
 
-//    if (!getName().equals(field)) writer.append(" # ").append(getName());
     writer
       .append(": ")
       .append(getType())
       .append("\n");
+    trace(context, "[scalar:write]", "<- out: " + getName());
   }
 
   @Override
   public void select(final Context context, final Writer writer) throws IOException {
+    trace(context, "[scalar:select]", "-> in: " + getName());
+
     final String originalName = getName();
     final String fieldName = NameUtils.sanitiseFieldForSelect(originalName);
 
@@ -43,6 +48,8 @@ public class Scalar extends Type {
       .append(indent(context))
       .append(fieldName)
       .append("\n");
+
+    trace(context, "[scalar:select]", "<- out: " + getName());
   }
 
   @Override

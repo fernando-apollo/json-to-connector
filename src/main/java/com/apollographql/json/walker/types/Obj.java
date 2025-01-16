@@ -9,6 +9,8 @@ import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.apollographql.json.walker.log.Trace.trace;
+
 public class Obj extends Type {
   private Map<String, Type> fields;
 
@@ -28,7 +30,7 @@ public class Obj extends Type {
   @Override
   public void write(final Context context, final Writer writer) throws IOException {
     if (fields.isEmpty()) return;
-
+    trace(context, "[obj:write]", "-> in: " + getName());
     context.enter(this);
 
     writer
@@ -52,10 +54,12 @@ public class Obj extends Type {
       .append("}\n");
 
     context.leave(this);
+    trace(context, "[obj:write]", "<- out: " + getName());
   }
 
   @Override
   public void select(final Context context, final Writer writer) throws IOException {
+    trace(context, "[obj:select]", "-> in: " + getName());
     context.enter(this);
 
     if (getParent() != null) {
@@ -78,6 +82,7 @@ public class Obj extends Type {
     }
 
     context.leave(this);
+    trace(context, "[obj:select]", "<- out: " + getName());
   }
 
   @Override

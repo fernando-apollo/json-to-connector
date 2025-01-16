@@ -3,7 +3,12 @@ package com.apollographql.json.walker;
 import com.apollographql.json.walker.types.Obj;
 import com.apollographql.json.walker.types.Type;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Stack;
+
+import static com.apollographql.json.walker.log.Trace.trace;
 
 public class Context {
   private final Stack<Type> stack;
@@ -19,12 +24,12 @@ public class Context {
   }
 
   public void enter(final Type element) {
-    System.out.println("-> [context] enter: (" + getStack().size() + ") " + element.getName());
+    // trace(this, "[context]", "-> enter: (" + getStack().size() + ") " + element.getName());
     this.stack.push(element);
   }
 
   public void leave(final Type element) {
-    System.out.println("<- [context] leave: (" + getStack().size() + ") " + element.getName());
+    // trace(this, "[context]", "<- leave: (" + getStack().size() + ") " + element.getName());
     this.stack.pop();
   }
 

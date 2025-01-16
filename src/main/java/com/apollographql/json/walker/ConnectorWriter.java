@@ -34,7 +34,7 @@ public class ConnectorWriter {
       """);
 
     walker.writeSelection(writer);
-    writer.append("\"\"\"\n)}");
+    writer.append("\"\"\"\n)}\n");
   }
 
 }

@@ -7,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 import java.io.Writer;
 
+import static com.apollographql.json.walker.log.Trace.trace;
+
 public class Array extends Type {
   private Type arrayType;
 
@@ -24,6 +26,7 @@ public class Array extends Type {
 
   @Override
   public void write(final Context context, final Writer writer) throws IOException {
+    trace(context, "[array:write]", "-> in: " + getName());
     final String field = NameUtils.sanitiseField(getName());
 
     final Type itemsType = getArrayType();
@@ -52,10 +55,12 @@ public class Array extends Type {
     if (!getName().equals(field)) writer.append(" # ").append(getName());
 
     writer.append("\n");
+    trace(context, "[array:write]", "<- out: " + getName());
   }
 
   @Override
   public void select(final Context context, final Writer writer) throws IOException {
+    trace(context, "[array:select]", "-> in: " + getName());
 
     final Type itemsType = getArrayType();
     if (itemsType instanceof Obj) {
@@ -69,6 +74,8 @@ public class Array extends Type {
         .append(fieldName)
         .append("\n");
     }
+
+    trace(context, "[array:select]", "<- out: " + getName());
   }
 
   @Override
