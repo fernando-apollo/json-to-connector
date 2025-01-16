@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 env:
-  RELEASE_VERSION: ${{ vars.RELEASE_VERSION }}
+  VERSION: ${{ vars.RELEASE_VERSION }}
 
 jobs:
   build-and-commit:
@@ -27,7 +27,6 @@ jobs:
 
     - name: Set Maven project version
       run: |
-        VERSION="1.0.${{ RELEASE_VERSION }}" # Replace this with your versioning scheme
         mvn versions:set -DnewVersion=$VERSION
         echo "Version set to $VERSION"
         
