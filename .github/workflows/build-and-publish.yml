@@ -1,0 +1,53 @@
+name: Build and Commit JAR
+
+on:
+  push:
+    branches:
+      - main  # Replace with your default branch name if different
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+env:
+  VERSION: ${{ vars.RELEASE_VERSION }}
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Java environment
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17' # Change this if your project uses a different Java version
+
+    - name: Set Maven project version
+      run: |
+        mvn versions:set -DnewVersion=$VERSION
+        echo "Version set to $VERSION"
+        
+    # Build the Maven project
+    - name: Build with Maven
+      run: mvn clean package
+
+    # Move the versioned JAR to a Release directory
+    - name: Move JAR to Release Directory
+      run: |
+        mkdir -p release
+        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        mv target/*-${VERSION}.jar release/
+
+    # Commit the updated `pom.xml` and the versioned JAR back to the repository
+    - name: Commit version and JAR
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add pom.xml release/
+        git commit -m "Set project version to $VERSION and add JAR file [CI]"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
