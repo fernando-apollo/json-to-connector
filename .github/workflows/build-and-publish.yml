@@ -1,9 +1,9 @@
 name: Build and Commit JAR
 
 on:
-  push:
-    branches:
-      - main  # Replace with your default branch name if different
+  # push:
+  #   branches:
+  #     - main  # Replace with your default branch name if different
   workflow_dispatch: # Allows manual triggering of the workflow
 
 env:
