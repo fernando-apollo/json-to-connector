@@ -15,19 +15,19 @@ import java.util.Set;
 
 public class Walker {
 
-  private final File folder;
+  private final File fileOrFolder;
   private final Context context;
 
-  public Walker(final File folder) {
-    if (!folder.exists() || !folder.isDirectory())
-      throw new IllegalArgumentException("Argument either doesn't exist or is not a folder");
+  public Walker(final File fileOrFolder) {
+    if (!fileOrFolder.exists())
+      throw new IllegalArgumentException("Argument does not exist");
 
-    this.folder = folder;
+    this.fileOrFolder = fileOrFolder;
     this.context = new Context();
   }
 
-  public File getFolder() {
-    return folder;
+  public File getFileOrFolder() {
+    return fileOrFolder;
   }
 
   public Context getContext() {
@@ -35,12 +35,16 @@ public class Walker {
   }
 
   public void walk() throws IOException {
-    final File[] sources = getFolder().listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
-
-    if (sources != null) {
-      for (final File source : sources) {
-        walkSource(source);
+    if (getFileOrFolder().isDirectory()) {
+      final File[] sources = getFileOrFolder().listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+      if (sources != null) {
+        for (final File source : sources) {
+          walkSource(source);
+        }
       }
+    }
+    else {
+      walkSource(getFileOrFolder());
     }
   }
 
@@ -62,7 +66,7 @@ public class Walker {
     trace(context, "-> [walkSource]", "in: " + source.getName());
     final JsonElement root = JsonParser.parseReader(new FileReader(source));
 
-    Type rootType = walkElement(getContext(), null, "root", root);
+    walkElement(getContext(), null, "root", root);
     trace(context, "   [walkSource]", "types found: " + context.getTypes().size());
 
     trace(context, "<- [walkSource]", "out: " + source.getName());
@@ -126,7 +130,7 @@ public class Walker {
     return result;
   }
 
-  private Scalar walkPrimitive(final Context context, final Type parent, final String name, final JsonPrimitive primitive) {
+  private Scalar walkPrimitive(final Context ignoredContext, final Type parent, final String name, final JsonPrimitive primitive) {
     Scalar result;
     if (primitive.isString()) {
       result = new Scalar(name, parent, "String");

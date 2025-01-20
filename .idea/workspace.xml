@@ -1,74 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JsonToGQL:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="commented tests until we get permission to use them">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_09_luton-town-manchester-city-history-rivalry.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_09_manchester-city-set-for-heavyweight-luton-fight-after-punch-in-the-face.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_10_luton-manchester-city-premier-league-match-report.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_16_bournemouth-v-luton-fixture-called-off-after-tom-lockyer-collapses-on-pitch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_17_tom-lockyer-luton-tests-update-cardiac-arrest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_21_luton-tom-lockyer-discharged-from-hospital-cardiac-arrest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/article/2023_dec_22_we-want-to-win-for-tom-lockyer-rob-edwards-expects-emotional-return-for-luton.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/blog/blog_2023_dec_05_late-arsenal-blow-negates-admirable-efforts-of-barkley-and-raucous-crowd.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/blog/blog_2023_dec_10_guardiolas-manchester-city-bury-ghosts-of-matches-past-to-beat-stubborn-luton.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/2023-12-16.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/clockwatch/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/articles/search.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/fronts/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/fronts/2023-12-24.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/fronts/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/all/2023-12-23_15_00.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/all/2023-12-23_15_01.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/all/2023-12-23_15_02.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/championship/2023-12-23_15_00.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/championship/2023-12-23_15_01.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/championship/2023-12-23_15_02.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/premier-league/2023-12-23_15_00.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/premier-league/2023-12-23_15_01.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/premier-league/2023-12-23_15_02.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/scottish-premiership/2023-12-23_15_00.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/scottish-premiership/2023-12-23_15_01.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/live-scores/scottish-premiership/2023-12-23_15_02.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/preferences/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/preferences/user/50.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/fixtures/championship/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/fixtures/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/fixtures/premier-league/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/fixtures/scottish-premiership/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/leagues/championship.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/leagues/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/leagues/premier-league.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/leagues/scottish-premiership.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/line-ups/luton-vs-newcastle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/line-ups/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/results/championship/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/results/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/results/premier-league/2023-12-22.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/results/premier-league/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/results/scottish-premiership/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/championship/2023-12-22.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/championship/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/not-found.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/premier-league/2023-12-22.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/premier-league/2023-12-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-22.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/stats/tables/scottish-premiership/2023-12-23.json" afterDir="false" />
+    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="file or folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/ConnectorWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/ConnectorWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +71,7 @@
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Command">
+  <component name="RunManager" selected="JUnit.TestSuite.test_000">
     <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
       <module name="JsonToGQL" />
@@ -141,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite.test_011" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSuite.test_000" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JsonToGQL" />
       <extension name="coverage">
         <pattern>
@@ -151,7 +96,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
       <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_011" />
+      <option name="METHOD_NAME" value="test_000" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -223,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSuite.test_000" />
         <item itemvalue="JUnit.TestSuite.test_015" />
         <item itemvalue="JUnit.TestSuite.test_012" />
         <item itemvalue="JUnit.TestSuite.test_013" />
         <item itemvalue="JUnit.TestSuite.test_014" />
-        <item itemvalue="JUnit.TestSuite.test_011" />
       </list>
     </recent_temporary>
   </component>
@@ -262,7 +207,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updates, updates.." />
     <MESSAGE value="commented tests until we get permission to use them" />
-    <option name="LAST_COMMIT_MESSAGE" value="commented tests until we get permission to use them" />
+    <MESSAGE value="file or folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="file or folder" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JsonToGQL$TestSuite_test_009.ic" NAME="TestSuite.test_009 Coverage Results" MODIFIED="1736940275194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

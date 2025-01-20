@@ -9,12 +9,14 @@ import java.util.concurrent.Callable;
 import java.util.logging.LogManager;
 
 
-@CommandLine.Command(name = "walk", mixinStandardHelpOptions = true, version = "walk 1.0",
-  description = "Walks a folder containing JSON file and derives an Apollo Connector GQL schema")
+@CommandLine.Command(name = "JsonToGQL", mixinStandardHelpOptions = true, version = "JsonToGQL 1.0",
+  description = "Converts a JSON payload (or a collection of JSON payloads) to an Apollo Connector spec.  When " +
+    "passing a folder, it is expected that these are from the same collection - for instance, a collection " +
+    "of articles, or blog posts - as the tool will attempt to merge these to derive a single connector schema.\n")
 class Command implements Callable<Integer> {
 
-  @Parameters(index = "0", description = "The folder where JSON payloads exist.")
-  private File folder;
+  @Parameters(index = "0", description = "A single JSON file or a folder with a collection of JSON files.", paramLabel = "<file|folder>")
+  private File fileOrFolder;
 
   @Option(names = "-c", description = "output an Apollo Connector template")
   boolean connector;
@@ -30,15 +32,11 @@ class Command implements Callable<Integer> {
 
   @Override
   public Integer call() throws Exception {
-    if (!this.folder.exists()) {
+    if (!this.fileOrFolder.exists()) {
       throw new IllegalArgumentException("Source folder does not exist");
     }
 
-    if (!this.folder.isDirectory()) {
-      throw new IllegalArgumentException("Source is not a folder");
-    }
-
-    final Walker walker = new Walker(folder);
+    final Walker walker = new Walker(fileOrFolder);
     walker.walk();
 
     final BufferedWriter writer;

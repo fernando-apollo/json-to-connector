@@ -9,9 +9,14 @@ for a given collection of `JSON` files located in a folder.
 
 ## Usage:
 ```
-Usage: walk [-chstV] [-o=output] <folder>
-Walks a folder containing JSON file and derives an Apollo Connector GQL schema
-      <folder>               The folder where JSON payloads exist.
+Usage: JsonToGQL [-chstV] [-o=output] <file|folder>
+Converts a JSON payload (or a collection of JSON payloads) to an Apollo
+Connector spec.  When passing a folder, it is expected that these are from the
+same collection - for instance, a collection of articles, or blog posts - as
+the tool will attempt to merge these to derive a single connector schema.
+
+      <file|folder>          A single JSON file or a folder with a collection
+                               of JSON files.
   -c                         output an Apollo Connector template
   -h, --help                 Show this help message and exit.
   -o, --output-file=output   where to write the output
@@ -20,16 +25,17 @@ Walks a folder containing JSON file and derives an Apollo Connector GQL schema
   -V, --version              Print version information and exit.
 ```
 
-## Why is the input a `folder` and not a `file`?
+## A `file` or a `folder`?
 
-Simply because one JSON payload might not be representative of all the possible results of an API invocation. 
-If an OAS/Swagger spec is not available then we derive the schema from JSON responses, so the more responses 
-we have, the better the resulting GraphQL schema will be.
+If you pass a `JSON file` as the source the tool will attempt to derive the types and the Apollo connector 
+selection from it. However, one single file might not be representative of all the possible variations of the output -
+which is why the tool will also accept a `folder` as an argument. In essence, the more responses we have, the better 
+the resulting GraphQL schema will be. See the examples below.
 
 ## Examples
 
 ### 1. Single JSON input
-JSON Input:
+If we have the following JSON Input saved in `./user/preferences/50.json`:
 ```json
 {
   "userId": 50,
@@ -44,8 +50,7 @@ JSON Input:
 
 ```
 
-GraphQL Types generated from `java -jar JsonToGQL.jar ./user -o ./connector-spec.graphql`:
-
+then we can run `java -jar JsonToGQL.jar ./user/preferences/50.json` and the output will be:
 ```graphql
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.10", import: ["@key"])
@@ -77,8 +82,9 @@ type Query {
 }
 ```
 
-### 2. Merge JSON
-Let's say we have the above payload split in 3:
+### 2. Merging a collection of JSON input files 
+
+Let's say we have the above payload split in 3 `JSON` files:
 
 `a.json`:
 ```json
@@ -106,8 +112,8 @@ Let's say we have the above payload split in 3:
 }
 ```
 
-All located in the `./merge` folder. 
-Running `java -jar JsonToGQL.jar ./merge -o ./connector-spec.graphql` yields:
+and that all files are located in the `./merge` folder. By running `java -jar JsonToGQL.jar ./merge` the tool will
+output the (same) schema as above:
 
 ```graphql
 extend schema

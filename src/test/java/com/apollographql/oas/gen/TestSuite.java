@@ -34,6 +34,20 @@ public class TestSuite {
   }
 
   @Test
+  void test_000() throws IOException, InterruptedException {
+    URL input = TestSuite.class.getClassLoader().getResource("test/merge/a.json");
+    assertNotNull(input);
+
+    final Walker walker = new Walker(new File(input.getPath()));
+    walker.walk();
+
+    ConnectorWriter.write(walker, getWriter());
+
+    final Pair<Integer, String> result = checkCompose();
+    assertEquals(0, result.getLeft());
+  }
+
+  @Test
   void test_001() throws IOException, InterruptedException {
     final Walker walker = new Walker(parentFolder("preferences/user/50.json"));
     walker.walk();
