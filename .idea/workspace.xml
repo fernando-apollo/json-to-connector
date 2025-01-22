@@ -11,12 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="Type.id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Scalar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Type.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +68,7 @@
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSuite.test_012">
+  <component name="RunManager" selected="JUnit.TestSuite.test_017">
     <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
       <module name="JsonToGQL" />
@@ -153,7 +147,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite.test_016" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSuite.test_017" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JsonToGQL" />
       <extension name="coverage">
         <pattern>
@@ -163,7 +157,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
       <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_016" />
+      <option name="METHOD_NAME" value="test_017" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -171,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSuite.test_017" />
         <item itemvalue="JUnit.TestSuite.test_012" />
         <item itemvalue="JUnit.TestSuite.test_011" />
         <item itemvalue="JUnit.TestSuite.test_001" />
         <item itemvalue="JUnit.TestSuite.test_010" />
-        <item itemvalue="JUnit.TestSuite.test_016" />
       </list>
     </recent_temporary>
   </component>

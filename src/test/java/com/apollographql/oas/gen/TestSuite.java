@@ -235,6 +235,28 @@ public class TestSuite {
     // assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
 
+  @Test
+  void test_017() throws IOException, InterruptedException {
+    final Walker walker = new Walker(
+      resourceFile("live-scores/all/2023-12-23_15_00.json")
+    );
+    walker.walk();
+
+    final StringWriter writer = getWriter();
+    ConnectorWriter.write(walker, writer);
+
+//    String schema = writer.toString() // we'll manuall fix the schema
+//      .replaceAll("### NO TYPE FOUND -- FIX MANUALLY! field: ", "")
+//      .replaceAll("attributes: ", "# attributes: ");
+//
+//    StringWriter newSchema = new StringWriter();
+//    newSchema.write(schema);
+
+    final Pair<Integer, String> result = checkCompose(getWriter());
+    assertEquals(0, result.getLeft());
+    // assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
+  }
+
   // internal methods
   private static File resourceFile(final String resource) {
     URL input = TestSuite.class.getClassLoader().getResource(resource);
