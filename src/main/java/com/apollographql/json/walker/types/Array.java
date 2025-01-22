@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Objects;
 
 import static com.apollographql.json.walker.log.Trace.trace;
 
@@ -31,7 +32,7 @@ public class Array extends Type {
 
     final Type itemsType = getArrayType();
     if (itemsType == null) {
-      writer.append("### NO TYPE FOUND -- FIX MANUALLY! field: ").append(field).append("\n");
+      writer.append("### NO TYPE FOUND -- FIX MANUALLY! field: ").append(field).append(": [String]").append("\n");
       return;
     }
 
@@ -40,12 +41,13 @@ public class Array extends Type {
       .append(field)
       .append(": [");
 
-    if (itemsType instanceof Scalar) {
-      final String scalar = ((Scalar) itemsType).getType();
-      writer.append(scalar);
+    if (itemsType instanceof final Scalar scalar) {
+      writer.append(scalar.getType());
+    }
+    else if (itemsType instanceof final Obj obj) {
+      writer.append(obj.getType());
     }
     else {
-      // assume an Obj
       writer.append(StringUtils.capitalize(itemsType.getName()));
     }
 
@@ -86,5 +88,23 @@ public class Array extends Type {
   @Override
   public String id() {
     return "array:#" + super.id();
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Array array)) {
+      return false;
+    }
+
+    return Objects.equals(arrayType, array.arrayType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), arrayType);
   }
 }

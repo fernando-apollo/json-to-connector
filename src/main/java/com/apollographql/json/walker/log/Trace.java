@@ -12,11 +12,13 @@ public class Trace {
 
   public static void trace(final Context ctx, final String context, final String message) {
     final int count = ctx != null ? ctx.getStack().size() : 0;
-    logger.log(FINE, " ".repeat(count) + ("(" + count + ")") + context + " " + message);
+    // logger.log(FINE, " ".repeat(count) + ("(" + count + ")") + context + " " + message);
+    System.out.println(" ".repeat(count) + ("(" + count + ")") + context + " " + message);
   }
 
   public static void warn(final Context ctx, final String context, final String message) {
     final int count = ctx != null ? ctx.getStack().size() : 0;
-    logger.log(WARNING, " ".repeat(count) + context + " " + message);
+    // logger.log(WARNING, " ".repeat(count) + context + " " + message);
+    System.err.println(" ".repeat(count) + ("(" + count + ")") + context + " " + message);
   }
 }

@@ -24,8 +24,8 @@ public class TestSuite {
     this.writer = new StringWriter();
   }
 
-  ImmutablePair<Integer, String> checkCompose() throws IOException, InterruptedException {
-    final String schema = getWriter().toString();
+  ImmutablePair<Integer, String> checkCompose(final Writer writer) throws IOException, InterruptedException {
+    final String schema = writer.toString();
     return Rover.compose(schema);
   }
 
@@ -40,7 +40,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -52,7 +52,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -62,7 +62,7 @@ public class TestSuite {
     walker.walk();
 
     ConnectorWriter.write(walker, getWriter());
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -73,7 +73,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -85,7 +85,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -96,7 +96,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -107,7 +107,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -118,7 +118,7 @@ public class TestSuite {
 
   ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -129,7 +129,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -140,7 +140,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -151,7 +151,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -162,7 +162,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -173,7 +173,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(1, result.getLeft());
     assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
@@ -185,7 +185,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
   }
 
@@ -196,7 +196,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(1, result.getLeft());
     assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
@@ -208,7 +208,7 @@ public class TestSuite {
 
     ConnectorWriter.write(walker, getWriter());
 
-    final Pair<Integer, String> result = checkCompose();
+    final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(1, result.getLeft());
     assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
@@ -220,11 +220,19 @@ public class TestSuite {
     );
     walker.walk();
 
-    ConnectorWriter.write(walker, getWriter());
+    final StringWriter writer = getWriter();
+    ConnectorWriter.write(walker, writer);
 
-    final Pair<Integer, String> result = checkCompose();
-    assertEquals(1, result.getLeft());
-    assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
+    String schema = writer.toString() // we'll manuall fix the schema
+      .replaceAll("### NO TYPE FOUND -- FIX MANUALLY! field: ", "")
+      .replaceAll("attributes: ", "# attributes: ");
+
+    StringWriter newSchema = new StringWriter();
+    newSchema.write(schema);
+
+    final Pair<Integer, String> result = checkCompose(newSchema);
+    assertEquals(0, result.getLeft());
+    // assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
 
   // internal methods

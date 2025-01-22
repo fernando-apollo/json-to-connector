@@ -5,6 +5,7 @@ import com.apollographql.json.walker.NameUtils;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Objects;
 
 import static com.apollographql.json.walker.log.Trace.trace;
 
@@ -60,5 +61,26 @@ public class Scalar extends Type {
   @Override
   public String id() {
     return "scalar:#" + super.id();
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Scalar scalar)) {
+      return false;
+    }
+
+    final boolean nameIsEqual = Objects.equals(getName(), scalar.getName());
+    final boolean typeIsEqual = Objects.equals(type, scalar.type);
+
+    return nameIsEqual && typeIsEqual;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type);
   }
 }

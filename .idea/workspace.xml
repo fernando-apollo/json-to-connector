@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="file or folder">
+    <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="Type.id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/Walker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Array.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/types/Obj.java" afterDir="false" />
@@ -74,7 +74,7 @@
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSuite.test_016">
+  <component name="RunManager" selected="JUnit.TestSuite.test_012">
     <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
       <module name="JsonToGQL" />
@@ -89,7 +89,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSuite.test_001" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JsonToGQL" />
       <extension name="coverage">
         <pattern>
@@ -99,28 +99,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
       <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSuite.test_013" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JsonToGQL" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
-      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_013" />
+      <option name="METHOD_NAME" value="test_001" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite.test_014" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSuite.test_010" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JsonToGQL" />
       <extension name="coverage">
         <pattern>
@@ -130,13 +115,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
       <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_014" />
+      <option name="METHOD_NAME" value="test_010" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSuite.test_015" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSuite.test_011" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JsonToGQL" />
       <extension name="coverage">
         <pattern>
@@ -146,7 +131,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
       <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
-      <option name="METHOD_NAME" value="test_015" />
+      <option name="METHOD_NAME" value="test_011" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSuite.test_012" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JsonToGQL" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.apollographql.oas.gen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.apollographql.oas.gen" />
+      <option name="MAIN_CLASS_NAME" value="com.apollographql.oas.gen.TestSuite" />
+      <option name="METHOD_NAME" value="test_012" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSuite.test_012" />
+        <item itemvalue="JUnit.TestSuite.test_011" />
+        <item itemvalue="JUnit.TestSuite.test_001" />
+        <item itemvalue="JUnit.TestSuite.test_010" />
         <item itemvalue="JUnit.TestSuite.test_016" />
-        <item itemvalue="JUnit.TestSuite" />
-        <item itemvalue="JUnit.TestSuite.test_015" />
-        <item itemvalue="JUnit.TestSuite.test_014" />
-        <item itemvalue="JUnit.TestSuite.test_013" />
       </list>
     </recent_temporary>
   </component>
@@ -211,14 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737369890277</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Type.id">
+      <option name="closed" value="true" />
+      <created>1737538987158</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737538987158</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updates, updates.." />
     <MESSAGE value="commented tests until we get permission to use them" />
     <MESSAGE value="file or folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="file or folder" />
+    <MESSAGE value="Type.id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Type.id" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JsonToGQL$TestSuite_test_009.ic" NAME="TestSuite.test_009 Coverage Results" MODIFIED="1736940275194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

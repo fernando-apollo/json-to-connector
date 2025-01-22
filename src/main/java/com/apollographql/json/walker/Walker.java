@@ -8,10 +8,10 @@ import com.apollographql.json.walker.types.Obj;
 import com.apollographql.json.walker.types.Scalar;
 import com.apollographql.json.walker.types.Type;
 import com.google.gson.*;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Walker {
 
@@ -57,8 +57,45 @@ public class Walker {
   }
 
   public void writeTypes(final Writer writer) throws IOException {
-    for (Type t : context.getTypes()) {
-      t.write(context, writer);
+    final Optional<Type> root = context.getTypes().stream().filter(t -> t.getParent() == null).findFirst();
+
+    if (root.isPresent()) {
+      final Set<Type> orderedSet = new LinkedHashSet<>();
+      writeType(root.get(), orderedSet);
+
+      final Map<String, Type> generatedSet = new LinkedHashMap<>();
+      for (Type t : orderedSet) {
+        final Obj obj = (Obj) t;
+        final String typeName = obj.getType();
+
+        if (generatedSet.containsKey(typeName)) {
+          // is it the same type tho? if so, we can reuse the type and just skip its generation
+          if (obj.equals(generatedSet.get(typeName))) {
+            continue;
+          }
+
+          obj.setType(generateNewObjType(generatedSet, t, typeName));
+        }
+
+        t.write(context, writer);
+        generatedSet.put(typeName, t);
+      }
+
+      System.out.println("orderedSet = " + orderedSet);
+    }
+  }
+
+  private void writeType(final Type type, final Set<Type> orderedSet) {
+    if (type instanceof final Obj obj) {
+      // traverse downwards first
+      for (Type child : obj.getFields().values()) {
+        writeType(child, orderedSet);
+      }
+
+      orderedSet.add(obj);
+    }
+    else if (type instanceof final Array array) {
+      writeType(array.getArrayType(), orderedSet);
     }
   }
 
@@ -146,4 +183,24 @@ public class Walker {
     }
     return result;
   }
+
+  // utility method for naming conflict resolution
+  private static String generateNewObjType(final Map<String, Type> generatedSet, final Type t, final String typeName) {
+    String newName;
+    Type type = t;
+    do {
+      final Type parent = type.getParent();
+      final String parentName = parent == null
+        ? ""
+        : StringUtils.capitalize(NameUtils.sanitiseField(parent.getName()));
+
+      final String thisName = StringUtils.capitalize(NameUtils.sanitiseField(typeName));
+
+      newName = parentName + thisName;
+      type = parent;
+    }
+    while (type != null && generatedSet.containsKey(newName));
+    return newName;
+  }
+
 }

@@ -5,6 +5,7 @@ import com.apollographql.json.walker.Context;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Objects;
 
 public abstract class Type {
   private final String name;
@@ -43,5 +44,17 @@ public abstract class Type {
     }
 
     return paths.append("/").append(getName()).toString();
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) return true;
+    if (!(o instanceof final Type type)) return false;
+    return Objects.equals(id(), type.id());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id());
   }
 }
