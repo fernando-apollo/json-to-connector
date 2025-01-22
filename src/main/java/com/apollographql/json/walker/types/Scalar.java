@@ -54,6 +54,11 @@ public class Scalar extends Type {
 
   @Override
   public String toString() {
-    return "scalar:" + getName() + '=' + getType();
+    return id() + '{' + getType() + '}';
+  }
+
+  @Override
+  public String id() {
+    return "scalar:#" + super.id();
   }
 }

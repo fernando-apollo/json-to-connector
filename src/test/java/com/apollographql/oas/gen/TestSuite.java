@@ -213,6 +213,20 @@ public class TestSuite {
     assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
   }
 
+  @Test
+  void test_016() throws IOException, InterruptedException {
+    final Walker walker = new Walker(
+      resourceFile("articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json")
+    );
+    walker.walk();
+
+    ConnectorWriter.write(walker, getWriter());
+
+    final Pair<Integer, String> result = checkCompose();
+    assertEquals(1, result.getLeft());
+    assertTrue(result.getRight().contains("SELECTED_FIELD_NOT_FOUND"));
+  }
+
   // internal methods
   private static File resourceFile(final String resource) {
     URL input = TestSuite.class.getClassLoader().getResource(resource);

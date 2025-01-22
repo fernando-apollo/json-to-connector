@@ -34,4 +34,14 @@ public abstract class Type {
   }
 
   public abstract void select(final Context context, final Writer writer) throws IOException;
+
+  public String id() {
+    StringBuilder paths = new StringBuilder();
+    Type parent = this;
+    while ((parent = parent.getParent()) != null) {
+      paths.insert(0, "/" + parent.getName());
+    }
+
+    return paths.append("/").append(getName()).toString();
+  }
 }

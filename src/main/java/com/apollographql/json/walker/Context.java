@@ -34,20 +34,20 @@ public class Context {
   }
 
   public void store(final Type type) {
-    if (this.types.containsKey(type.getName())) {
+    if (this.types.containsKey(type.id())) {
       merge(type);
     }
     else {
-      this.types.put(type.getName(), type);
+      this.types.put(type.id(), type);
     }
   }
 
   private void merge(final Type type) {
-    final Type source = this.types.get(type.getName());
+    final Type source = this.types.get(type.id());
     // only merge-able if source is also an object
     if (source instanceof final Obj srcObj && type instanceof final Obj trgObj) {
       srcObj.getFields().putAll(trgObj.getFields());
-      this.types.put(srcObj.getName(), srcObj);
+      this.types.put(srcObj.id(), srcObj);
     }
   }
 

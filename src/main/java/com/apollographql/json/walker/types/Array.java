@@ -80,6 +80,11 @@ public class Array extends Type {
 
   @Override
   public String toString() {
-    return "array:" + getName() + '=' + getArrayType();
+    return id() + '[' + getArrayType().getName() + ']';
+  }
+
+  @Override
+  public String id() {
+    return "array:#" + super.id();
   }
 }

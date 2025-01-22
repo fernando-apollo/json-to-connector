@@ -89,4 +89,9 @@ public class Obj extends Type {
   public String toString() {
     return "obj:" + getName() + ":{" + String.join(",", getFields().keySet()) + "}";
   }
+
+  @Override
+  public String id() {
+    return "obj:#" + super.id();
+  }
 }
