@@ -302,6 +302,9 @@ public class TestSuite {
       final String basePath = workdir != null ? workdir : System.getProperty("java.io.tmpdir");
       System.out.println("Rover.compose pathPath = " + basePath);
 
+      final Path specPath = Files.createTempFile("test-spec", ".graphql");
+      Files.write(specPath, schema.getBytes());
+
       // write supergraph.yaml file
       String content = """
       federation_version: =2.10.0-preview.3
@@ -309,14 +312,11 @@ public class TestSuite {
         test_spec:
           name: test-spec
           routing_url: http://localhost # this value is ignored
-          schema:
-            file: test-spec.graphql
-      """;
+          schema:     
+      """ + "      file: " + specPath.toAbsolutePath() + " # path to the schema file\n";
 
-      Files.write(Path.of(basePath + File.pathSeparator  + "supergraph.yaml"), content.getBytes());
-
-      final Path path = Paths.get(basePath + File.pathSeparator + "test-spec.graphql");
-      Files.write(path, schema.getBytes());
+      final Path supergraphPath = Files.createTempFile("supergraph", ".yaml");
+      Files.write(supergraphPath, content.getBytes());
 
       final ImmutablePair<Boolean, String> roverAvailable = isCommandAvailable("rover");
       if (roverAvailable.getLeft()) {
