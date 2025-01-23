@@ -22,6 +22,11 @@ jobs:
         else
           echo "VERSION is set to $VERSION"
         fi
+
+    - name: Install Rover
+      run: |
+        curl -sSL https://rover.apollo.dev/nix/v0.27.0-rc.0 | sh
+        echo "$HOME/.rover/bin" >> $GITHUB_PATH
     
     # Checkout the repository
     - name: Checkout code
