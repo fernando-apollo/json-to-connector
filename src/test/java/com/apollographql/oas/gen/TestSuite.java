@@ -12,6 +12,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -111,12 +112,12 @@ public class TestSuite {
     assertEquals(0, result.getLeft());
   }
 
-@Test
+  @Test
   void test_007() throws IOException, InterruptedException {
     final Walker walker = new Walker(resourceFile("stats/tables/championship"));
     walker.walk();
 
-  ConnectorWriter.write(walker, getWriter());
+    ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
@@ -267,37 +268,87 @@ public class TestSuite {
 
   static class Rover {
     public static void main(String[] args) throws IOException, InterruptedException {
-      compose("nothing");
+      compose("""
+      type Root {
+        id: ID!
+      }
+      
+      type Query {
+        root: Root
+      }""");
+    }
+
+    public static ImmutablePair<Boolean, String> isCommandAvailable(String command) {
+      String os = System.getProperty("os.name").toLowerCase();
+      String[] checkCommand = os.contains("win") ? new String[]{"where", command} : new String[]{"which", command};
+
+      try {
+        Process process = new ProcessBuilder(checkCommand).start();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+          final String line = reader.readLine();
+          return new ImmutablePair<>(line != null, line);
+        }
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+        return new ImmutablePair<>(false, e.getMessage());
+      }
     }
 
     public static ImmutablePair<Integer, String> compose(final String schema) throws IOException, InterruptedException {
-      final String basePath = "/Users/fernando/Documents/Opportunities/Vodafone/tmf-apis/supergraph";
-      final Path path = Paths.get(basePath + "/test-spec.graphql");
+      final Map<String, String> env = System.getenv();
+      final String workdir = env.get("WORKDIR");
+
+      final String basePath = workdir != null ? workdir : System.getProperty("java.io.tmpdir");
+      System.out.println("Rover.compose pathPath = " + basePath);
+
+      // write supergraph.yaml file
+      String content = """
+      federation_version: =2.10.0-preview.3
+      subgraphs:
+        test_spec:
+          name: test-spec
+          routing_url: http://localhost # this value is ignored
+          schema:
+            file: test-spec.graphql
+      """;
+
+      Files.write(Path.of(basePath + "supergraph.yaml"), content.getBytes());
+
+      final Path path = Paths.get(basePath + "test-spec.graphql");
       Files.write(path, schema.getBytes());
 
-      final String command = String.format("/Users/fernando/.rover/bin/rover supergraph compose --config %s/supergraph.yaml", basePath); // Replace with your desired command
-      System.out.println("command = " + command);
+      final ImmutablePair<Boolean, String> roverAvailable = isCommandAvailable("rover");
+      if (roverAvailable.getLeft()) {
+        final String rover = roverAvailable.getRight();
+        System.out.println("Rover.compose rover is available in: " + rover);
 
-      // Run the command
-      final ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
-      final Process process = processBuilder.start();
+        final String command = String.format("%s supergraph compose --config %s/supergraph.yaml", rover, basePath); // Replace with your desired command
+        System.out.println("command = " + command);
 
-      // Read the command output
-      final BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-      // also collect the stream
-      final StringWriter writer = new StringWriter();
+        // Run the command
+        final ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
+        final Process process = processBuilder.start();
 
-      String e;
-      while ((e = error.readLine()) != null) {
-        System.err.println(e);
-        writer.write(e);
+        // Read the command output
+        final BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        // also collect the stream
+        final StringWriter writer = new StringWriter();
+
+        String e;
+        while ((e = error.readLine()) != null) {
+          System.err.println(e);
+          writer.write(e);
+        }
+
+        // Wait for the process to finish and get the exit code
+        final int errorCode = process.waitFor();
+
+        return new ImmutablePair<>(errorCode, writer.toString());
       }
-
-      // Wait for the process to finish and get the exit code
-      final int errorCode = process.waitFor();
-
-      return new ImmutablePair<>(errorCode, writer.toString());
-//      return errorCode;
+      else {
+        return new ImmutablePair<>(-1, "rover command not found");
+      }
     }
   }
 }
