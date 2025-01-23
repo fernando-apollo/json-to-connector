@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 env:
-  VERSION: "0.1"
+  VERSION: "0.2"
 
 jobs:
   build-and-commit:
