@@ -28,40 +28,40 @@ jobs:
         curl -sSL https://rover.apollo.dev/nix/v0.27.0-rc.0 | sh
         echo "$HOME/.rover/bin" >> $GITHUB_PATH
     
-    # Checkout the repository
-    - name: Checkout code
-      uses: actions/checkout@v3
+    # # Checkout the repository
+    # - name: Checkout code
+    #   uses: actions/checkout@v3
 
-    # Set up Java environment
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17' # Change this if your project uses a different Java version
+    # # Set up Java environment
+    # - name: Set up JDK
+    #   uses: actions/setup-java@v3
+    #   with:
+    #     distribution: 'temurin'
+    #     java-version: '17' # Change this if your project uses a different Java version
 
-    - name: Set Maven project version
-      run: |
-        mvn versions:set -DnewVersion=$MY_REL_VERSION
-        echo "Version set to $MY_REL_VERSION"
+    # - name: Set Maven project version
+    #   run: |
+    #     mvn versions:set -DnewVersion=$MY_REL_VERSION
+    #     echo "Version set to $MY_REL_VERSION"
         
-    # Build the Maven project
-    - name: Build with Maven
-      run: mvn clean package
+    # # Build the Maven project
+    # - name: Build with Maven
+    #   run: mvn clean package
 
-    # Move the versioned JAR to a Release directory
-    - name: Move JAR to Release Directory
-      run: |
-        mkdir -p release
-        MY_REL_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-        mv target/*-${MY_REL_VERSION}.jar release/
+    # # Move the versioned JAR to a Release directory
+    # - name: Move JAR to Release Directory
+    #   run: |
+    #     mkdir -p release
+    #     MY_REL_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+    #     mv target/*-${MY_REL_VERSION}.jar release/
 
-    # Commit the updated `pom.xml` and the versioned JAR back to the repository
-    - name: Commit version and JAR
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add pom.xml release/
-        git commit -m "Set project version to $MY_REL_VERSION and add JAR file [CI]"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # # Commit the updated `pom.xml` and the versioned JAR back to the repository
+    # - name: Commit version and JAR
+    #   run: |
+    #     git config --global user.name "github-actions[bot]"
+    #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    #     git add pom.xml release/
+    #     git commit -m "Set project version to $MY_REL_VERSION and add JAR file [CI]"
+    #     git push
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
