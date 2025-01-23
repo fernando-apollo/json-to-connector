@@ -323,7 +323,7 @@ public class TestSuite {
         final String rover = roverAvailable.getRight();
         System.out.println("Rover.compose rover is available in: " + rover);
 
-        final String command = String.format("%s supergraph compose --config %s/supergraph.yaml", rover, basePath); // Replace with your desired command
+        final String command = String.format("%s supergraph compose --config %s/supergraph.yaml --elv2-license accept", rover, basePath); // Replace with your desired command
         System.out.println("command = " + command);
 
         // Run the command
