@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 env:
-  VERSION: "0.2"
+  MY_REL_VERSION: "0.2"
 
 jobs:
   build-and-commit:
@@ -16,11 +16,11 @@ jobs:
     steps:
     - name: Check if VERSION is set
       run: |
-        if [ -z "$VERSION" ]; then
-          echo "Error: VERSION is not set."
+        if [ -z "$MY_REL_VERSION" ]; then
+          echo "Error: MY_REL_VERSION is not set."
           exit 1
         else
-          echo "VERSION is set to $VERSION"
+          echo "MY_REL_VERSION is set to $MY_REL_VERSION"
         fi
 
     - name: Install Rover
@@ -41,8 +41,8 @@ jobs:
 
     - name: Set Maven project version
       run: |
-        mvn versions:set -DnewVersion=$VERSION
-        echo "Version set to $VERSION"
+        mvn versions:set -DnewVersion=$MY_REL_VERSION
+        echo "Version set to $MY_REL_VERSION"
         
     # Build the Maven project
     - name: Build with Maven
@@ -52,8 +52,8 @@ jobs:
     - name: Move JAR to Release Directory
       run: |
         mkdir -p release
-        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-        mv target/*-${VERSION}.jar release/
+        MY_REL_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        mv target/*-${MY_REL_VERSION}.jar release/
 
     # Commit the updated `pom.xml` and the versioned JAR back to the repository
     - name: Commit version and JAR
@@ -61,7 +61,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add pom.xml release/
-        git commit -m "Set project version to $VERSION and add JAR file [CI]"
+        git commit -m "Set project version to $MY_REL_VERSION and add JAR file [CI]"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
