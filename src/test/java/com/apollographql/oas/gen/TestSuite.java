@@ -313,9 +313,9 @@ public class TestSuite {
             file: test-spec.graphql
       """;
 
-      Files.write(Path.of(basePath + "supergraph.yaml"), content.getBytes());
+      Files.write(Path.of(basePath + File.pathSeparator  + "supergraph.yaml"), content.getBytes());
 
-      final Path path = Paths.get(basePath + "test-spec.graphql");
+      final Path path = Paths.get(basePath + File.pathSeparator + "test-spec.graphql");
       Files.write(path, schema.getBytes());
 
       final ImmutablePair<Boolean, String> roverAvailable = isCommandAvailable("rover");
