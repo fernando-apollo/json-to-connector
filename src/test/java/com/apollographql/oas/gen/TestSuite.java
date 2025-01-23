@@ -269,13 +269,13 @@ public class TestSuite {
   static class Rover {
     public static void main(String[] args) throws IOException, InterruptedException {
       compose("""
-      type Root {
-        id: ID!
-      }
-      
-      type Query {
-        root: Root
-      }""");
+        type Root {
+          id: ID!
+        }
+              
+        type Query {
+          root: Root
+        }""");
     }
 
     public static ImmutablePair<Boolean, String> isCommandAvailable(String command) {
@@ -307,13 +307,13 @@ public class TestSuite {
 
       // write supergraph.yaml file
       String content = """
-      federation_version: =2.10.0-preview.3
-      subgraphs:
-        test_spec:
-          name: test-spec
-          routing_url: http://localhost # this value is ignored
-          schema:     
-      """ + "      file: " + specPath.toAbsolutePath() + " # path to the schema file\n";
+        federation_version: =2.10.0-preview.3
+        subgraphs:
+          test_spec:
+            name: test-spec
+            routing_url: http://localhost # this value is ignored
+            schema:     
+        """ + "      file: " + specPath.toAbsolutePath() + " # path to the schema file\n";
 
       final Path supergraphPath = Files.createTempFile("supergraph", ".yaml");
       Files.write(supergraphPath, content.getBytes());
@@ -323,7 +323,7 @@ public class TestSuite {
         final String rover = roverAvailable.getRight();
         System.out.println("Rover.compose rover is available in: " + rover);
 
-        final String command = String.format("%s supergraph compose --config %s/supergraph.yaml --elv2-license accept", rover, basePath); // Replace with your desired command
+        final String command = String.format("%s supergraph compose --config %s --elv2-license accept", rover, supergraphPath.toAbsolutePath()); // Replace with your desired command
         System.out.println("command = " + command);
 
         // Run the command
