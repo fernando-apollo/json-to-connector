@@ -300,10 +300,11 @@ public class TestSuite {
       final String workdir = env.get("WORKDIR");
 
       final String basePath = workdir != null ? workdir : System.getProperty("java.io.tmpdir");
-      System.out.println("Rover.compose pathPath = " + basePath);
+      System.out.println("[compose] temp folder: " + basePath);
 
       final Path specPath = Files.createTempFile("test-spec", ".graphql");
       Files.write(specPath, schema.getBytes());
+      System.out.println("[compose] wrote test_spec.graphql to: " + specPath);
 
       // write supergraph.yaml file
       String content = """
@@ -321,10 +322,10 @@ public class TestSuite {
       final ImmutablePair<Boolean, String> roverAvailable = isCommandAvailable("rover");
       if (roverAvailable.getLeft()) {
         final String rover = roverAvailable.getRight();
-        System.out.println("Rover.compose rover is available in: " + rover);
+        System.out.println("[compose] rover is available: " + rover);
 
         final String command = String.format("%s supergraph compose --config %s --elv2-license accept", rover, supergraphPath.toAbsolutePath()); // Replace with your desired command
-        System.out.println("command = " + command);
+        System.out.println("[compose] command = " + command);
 
         // Run the command
         final ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
@@ -343,7 +344,6 @@ public class TestSuite {
 
         // Wait for the process to finish and get the exit code
         final int errorCode = process.waitFor();
-
         return new ImmutablePair<>(errorCode, writer.toString());
       }
       else {

@@ -10,7 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8dd4ed5-cb10-453b-b345-f8414562f610" name="Changes" comment="Type.id">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/apollographql/json/walker/log/Trace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/apollographql/oas/gen/TestSuite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
       <recent name="$PROJECT_DIR$/src/test/resources/preferences/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestSuite$Rover">
+  <component name="RunManager" selected="JUnit.TestSuite.test_001">
     <configuration name="Command" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.apollographql.json.walker.Command" />
       <module name="JsonToGQL" />
@@ -161,11 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSuite.test_001" />
+        <item itemvalue="JUnit.TestSuite.test_011" />
         <item itemvalue="Application.TestSuite$Rover" />
         <item itemvalue="JUnit.TestSuite.test_017" />
         <item itemvalue="JUnit.TestSuite.test_012" />
-        <item itemvalue="JUnit.TestSuite.test_011" />
-        <item itemvalue="JUnit.TestSuite.test_001" />
       </list>
     </recent_temporary>
   </component>
