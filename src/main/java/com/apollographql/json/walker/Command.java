@@ -36,9 +36,7 @@ class Command implements Callable<Integer> {
       throw new IllegalArgumentException("Source folder does not exist");
     }
 
-    final Walker walker = new Walker(fileOrFolder);
-    walker.walk();
-
+    final Walker walker = Walker.fromFileOrFolder(fileOrFolder);
     final BufferedWriter writer;
     if (this.output == null) {
       writer = new BufferedWriter(new OutputStreamWriter(System.out));

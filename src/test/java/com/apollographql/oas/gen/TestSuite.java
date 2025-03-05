@@ -11,7 +11,6 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,9 +35,7 @@ public class TestSuite {
 
   @Test
   void test_000() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("test/merge/a.json"));
-    walker.walk();
-
+    final Walker walker = Walker.fromFileOrFolder(resourceFile("test/merge/a.json"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -48,9 +45,7 @@ public class TestSuite {
 
   @Test
   void test_001() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("preferences/user/50.json"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("preferences/user/50.json"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -59,9 +54,7 @@ public class TestSuite {
 
   @Test
   void test_002() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("live-scores/all"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("live-scores/all"));
     ConnectorWriter.write(walker, getWriter());
     final Pair<Integer, String> result = checkCompose(getWriter());
     assertEquals(0, result.getLeft());
@@ -69,9 +62,7 @@ public class TestSuite {
 
   @Test
   void test_003() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("stats/fixtures/championship"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/fixtures/championship"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -81,9 +72,7 @@ public class TestSuite {
   @Test
   void test_004() throws IOException, InterruptedException {
     //
-    final Walker walker = new Walker(resourceFile("stats/leagues"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/leagues"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -92,9 +81,7 @@ public class TestSuite {
 
   @Test
   void test_005() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("stats/line-ups"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/line-ups"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -103,9 +90,7 @@ public class TestSuite {
 
   @Test
   void test_006() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("stats/results/scottish-premiership"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/results/scottish-premiership"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -114,9 +99,7 @@ public class TestSuite {
 
   @Test
   void test_007() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("stats/tables/championship"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/tables/championship"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -125,9 +108,7 @@ public class TestSuite {
 
   @Test
   void test_008() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("stats/tables/not-found.json"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("stats/tables/not-found.json"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -136,9 +117,7 @@ public class TestSuite {
 
   @Test
   void test_009() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("live-scores/all/"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("live-scores/all/"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -147,9 +126,7 @@ public class TestSuite {
 
   @Test
   void test_010() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("fronts"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("fronts"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -158,9 +135,7 @@ public class TestSuite {
 
   @Test
   void test_011() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("articles/search.json"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("articles/search.json"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -169,9 +144,7 @@ public class TestSuite {
 
   @Test
   void test_012() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("articles/clockwatch"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("articles/clockwatch"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -181,9 +154,7 @@ public class TestSuite {
 
   @Test
   void test_013() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("test/merge"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("test/merge"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -192,9 +163,7 @@ public class TestSuite {
 
   @Test
   void test_014() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("articles/blog"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("articles/blog"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -204,9 +173,7 @@ public class TestSuite {
 
   @Test
   void test_015() throws IOException, InterruptedException {
-    final Walker walker = new Walker(resourceFile("articles/article/"));
-    walker.walk();
-
+    final Walker walker =  Walker.fromFileOrFolder(resourceFile("articles/article/"));
     ConnectorWriter.write(walker, getWriter());
 
     final Pair<Integer, String> result = checkCompose(getWriter());
@@ -216,11 +183,9 @@ public class TestSuite {
 
   @Test
   void test_016() throws IOException, InterruptedException {
-    final Walker walker = new Walker(
+    final Walker walker = Walker.fromFileOrFolder(
       resourceFile("articles/article/2023_dec_01_premier-league-10-things-to-look-out-for-this-weekend.json")
     );
-    walker.walk();
-
     final StringWriter writer = getWriter();
     ConnectorWriter.write(walker, writer);
 
@@ -238,11 +203,7 @@ public class TestSuite {
 
   @Test
   void test_017() throws IOException, InterruptedException {
-    final Walker walker = new Walker(
-      resourceFile("live-scores/all/2023-12-23_15_00.json")
-    );
-    walker.walk();
-
+    final Walker walker = Walker.fromFileOrFolder(resourceFile("live-scores/all/2023-12-23_15_00.json"));
     final StringWriter writer = getWriter();
     ConnectorWriter.write(walker, writer);
 

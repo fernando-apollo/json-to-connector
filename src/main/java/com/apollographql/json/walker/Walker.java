@@ -15,37 +15,52 @@ import java.util.*;
 
 public class Walker {
 
-  private final File fileOrFolder;
+//  private final File fileOrFolder;
   private final Context context;
 
-  public Walker(final File fileOrFolder) {
-    if (!fileOrFolder.exists())
-      throw new IllegalArgumentException("Argument does not exist");
-
-    this.fileOrFolder = fileOrFolder;
+  private Walker() {
     this.context = new Context();
   }
 
-  public File getFileOrFolder() {
-    return fileOrFolder;
+  private Walker(final File fileOrFolder) {
+    if (!fileOrFolder.exists())
+      throw new IllegalArgumentException("Argument does not exist");
+
+    this.context = new Context();
   }
+
+//  public File getFileOrFolder() {
+//    return fileOrFolder;
+//  }
 
   public Context getContext() {
     return context;
   }
 
-  public void walk() throws IOException {
-    if (getFileOrFolder().isDirectory()) {
-      final File[] sources = getFileOrFolder().listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+  public void walk(final File fileOrFolder) throws IOException {
+    if (fileOrFolder.isDirectory()) {
+      final File[] sources = fileOrFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
       if (sources != null) {
         for (final File source : sources) {
-          walkSource(source);
+          walkSourceFile(source);
         }
       }
     }
     else {
-      walkSource(getFileOrFolder());
+      walkSourceFile(fileOrFolder);
     }
+  }
+
+  public static Walker fromFileOrFolder(final File fileOrFolder) throws IOException {
+    final Walker walker = new Walker();
+    walker.walk(fileOrFolder);
+    return walker;
+  }
+
+  public static Walker fromReader(final String json) throws IOException {
+    final Walker walker = new Walker();
+    walker.walkReader(new StringReader(json));
+    return walker;
   }
 
   public void writeSelection(final Writer writer) throws IOException {
@@ -99,14 +114,17 @@ public class Walker {
     }
   }
 
-  private void walkSource(final File source) throws FileNotFoundException {
+  private void walkSourceFile(final File source) throws FileNotFoundException {
     trace(context, "-> [walkSource]", "in: " + source.getName());
-    final JsonElement root = JsonParser.parseReader(new FileReader(source));
+    walkReader(new FileReader(source));
+    trace(context, "<- [walkSource]", "out: " + source.getName());
+  }
+
+  private void walkReader(final Reader reader) {
+    final JsonElement root = JsonParser.parseReader(reader);
 
     walkElement(getContext(), null, "root", root);
     trace(context, "   [walkSource]", "types found: " + context.getTypes().size());
-
-    trace(context, "<- [walkSource]", "out: " + source.getName());
   }
 
   private Type walkElement(final Context context, final Type parent, final String name, final JsonElement element) {
